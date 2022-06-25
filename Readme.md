@@ -1,9 +1,8 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Владислав Антипов](https://up.htmlacademy.ru/javascript/26/user/1944999).
-* Наставник: `Неизвестно`.
 
-* Наставник: [Дамир Рысаев](https://htmlacademy.ru/profile/id36230).
+* Наставник: [Александр Крапивин](https://htmlacademy.ru/profile/id197315).
 
 ---
 
