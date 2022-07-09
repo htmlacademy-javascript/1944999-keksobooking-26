@@ -25,12 +25,12 @@ const offer = {
 
 const {title,adress,price,guest,checkin,checkout,features,description,photos} = offer;
 
-function generateArrayObjects (numberAvatar) {
+function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
 
   const objects = {
 
     author: {//объект — описывает автора.
-      avatar: author.avatar[numberAvatar]//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
+      avatar: getArrayNumberForImage(lengthArrayAvatar)[indexAvatar]//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
     },
 
     locations: {lat: getRandomPozitiveFloat(lat.from, lat.before, lat.digits), /*число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.*/lng: getRandomPozitiveFloat(lng.from, lng.before, lng.digits) //число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.
@@ -53,7 +53,8 @@ function generateArrayObjects (numberAvatar) {
 }
 
 
-const generateArrayData = (lengthArray) => Array.from({length:lengthArray}, (v,numberAvatar) => generateArrayObjects(numberAvatar));
+const generateArrayData = (lengthArray) => Array.from({length:lengthArray}, (value,index) => generateArrayObjects(lengthArray,index));
 
 export {generateArrayData};
+
 
