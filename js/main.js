@@ -1,3 +1,3 @@
-import {generateArrayData} from './data.js';
+import {serverData} from './generate-template.js'
 
-generateArrayData(10);
+
