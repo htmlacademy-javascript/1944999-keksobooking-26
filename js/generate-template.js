@@ -3,9 +3,10 @@ import {generateArrayData} from './data.js';
 export const  serverData = generateArrayData(10);
 
 const templateCard = document.querySelector('#card').content;
-const mapCanvas = document.querySelector('.notice__title');
+const mapCanvas = document.querySelector('#map-canvas');
 const type = {palace: 'Дворец',flat:'Квартира', bungalow:'Бунгало', house:'Дом', hotel:'Отель'}
-
+const fragment = document.createDocumentFragment();
+const containerDataFromServer = document.createElement('div');
 
 serverData.forEach(({author,locations,offer}) => {
   let cloneTemplate = templateCard.cloneNode(true);
@@ -19,46 +20,55 @@ serverData.forEach(({author,locations,offer}) => {
   cloneTemplate.querySelector('.popup__text--time').textContent= '';
   cloneTemplate.querySelector('.popup__text--time').insertAdjacentHTML('afterbegin', 'Заезд после ' + offer.checkin + ' выезд до ' + offer.checkout );
 
-  // Первй способ
- /* cloneTemplate.querySelector('.popup__features').textContent = '';
-  offer.features.forEach(value=> {
-    const elementFeature = document.createElement('li')
-    elementFeature.classList.add('popup__feature--' + value, 'popup__feature')
-    cloneTemplate.querySelector('.popup__features').append(elementFeature)
-  })
-*/
-
-  //Второй способ
-  /*const fragment = document.createDocumentFragment();
-
-  offer.features.forEach ((feature) => {
-    const elementFeature = cloneTemplate.querySelector('.popup__feature--' + feature)
-
-    if (elementFeature) {
-      fragment.append(elementFeature)
+  //Третий способ
+  const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature')
+  features.forEach(value => {
+    const isNecessary = offer.features.some((element) => value.classList.contains('popup__feature--' + element))
+    if (!isNecessary) {
+      value.remove()
     }
   })
-  cloneTemplate.querySelector('.popup__features').textContent='';
-  cloneTemplate.querySelector('.popup__features').append(fragment)
-*/
 
-//Третий способ
-const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature')
-features.forEach(value => {
- const isNecessary = offer.features.some((element) => value.classList.contains('popup__feature--' + element))
- if (!isNecessary) {
-  value.remove()
- }
+  cloneTemplate.querySelector('.popup__description').textContent = offer.description;
+
+
+  offer.photos.forEach((photo) => {
+    const elementPhoto = cloneTemplate.querySelector('.popup__photo').cloneNode(true);
+    elementPhoto.src = photo;
+    cloneTemplate.querySelector('.popup__photos').append(elementPhoto);
+  })
+  cloneTemplate.querySelector('.popup__photo').remove()
+
+  // Первй способ
+  /* cloneTemplate.querySelector('.popup__features').textContent = '';
+    offer.features.forEach(value=> {
+      const elementFeature = document.createElement('li')
+      elementFeature.classList.add('popup__feature--' + value, 'popup__feature')
+      cloneTemplate.querySelector('.popup__features').append(elementFeature)
+    })
+
+    //Второй способ
+    /*const fragment = document.createDocumentFragment();
+
+    offer.features.forEach ((feature) => {
+      const elementFeature = cloneTemplate.querySelector('.popup__feature--' + feature)
+
+      if (elementFeature) {
+        fragment.append(elementFeature)
+      }
+    })
+    cloneTemplate.querySelector('.popup__features').textContent='';
+    cloneTemplate.querySelector('.popup__features').append(fragment)
+  */
+
+  // console.log(elementPhoto)
+
+  containerDataFromServer.append(cloneTemplate)
 })
-
-
-console.log(features)
-  mapCanvas.append(cloneTemplate)
-})
+const arrayDataFromServer = containerDataFromServer.children
+mapCanvas.append(arrayDataFromServer[1])
 
 
 
 
 
-
-console.log(serverData)

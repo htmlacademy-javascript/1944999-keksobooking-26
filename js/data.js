@@ -20,7 +20,7 @@ const offer = {
   checkin: ['12:00','13:00','14:00'],
   checkout: ['12:00','13:00','14:00'],
   features: ['wifi', 'dishwasher', 'parking', 'washer', 'elevator','conditioner'],
-  description: 'Современный uостевой дом расположен в центре города. Для гостей организуют трансфер от/до аэропорта. В числе удобств туристическое бюро и бизнес-центр.',
+  description: 'Современный гостевой дом расположен в центре города. Для гостей организуют трансфер от/до аэропорта. В числе удобств туристическое бюро и бизнес-центр.',
   photos:  ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg']
 };
 
@@ -52,6 +52,7 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
 
   };
 
+  
   return objects;
 }
 
