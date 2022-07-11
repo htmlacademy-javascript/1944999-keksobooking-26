@@ -1,8 +1,8 @@
 import {getRandomPozitiveFloat,getArrayNumberForImage,generateArrayPhoto} from './util.js';
 
-const author = {
-  avatars: getArrayNumberForImage(10)  //Перед однозначными числами ставится 01, 02, 03..  Адреса изображений не повторяются.
-};
+// const author = {
+//   avatars: getArrayNumberForImage(10)  //Перед однозначными числами ставится 01, 02, 03..  Адреса изображений не повторяются.
+// };
 
 const locations = {
   lat: {from: 35.65,before: 35.7,digits: 5},
@@ -52,7 +52,6 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
 
   };
 
-  
   return objects;
 }
 

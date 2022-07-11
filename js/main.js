@@ -1,3 +1,2 @@
-import {serverData} from './generate-template.js'
-
+import './generate-template.js';
 
