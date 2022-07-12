@@ -1,9 +1,5 @@
 import {getRandomPozitiveFloat,getArrayNumberForImage,generateArrayPhoto} from './util.js';
 
-// const author = {
-//   avatars: getArrayNumberForImage(10)  //Перед однозначными числами ставится 01, 02, 03..  Адреса изображений не повторяются.
-// };
-
 const locations = {
   lat: {from: 35.65,before: 35.7,digits: 5},
   lng: {from: 139.7,before: 139.8,digits: 5}
@@ -31,14 +27,12 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
   const objects = {
 
     author: {//объект — описывает автора.
-      avatars: getArrayNumberForImage(lengthArrayAvatar)[indexAvatar]//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
+      avatars: `img/avatars/user${getArrayNumberForImage(lengthArrayAvatar)[indexAvatar]}.png`,//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
     },
 
-    locations: {lat: getRandomPozitiveFloat(lat.from, lat.before, lat.digits), /*число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.*/lng: getRandomPozitiveFloat(lng.from, lng.before, lng.digits) //число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.
-    },
     offer: {
       title:title, //строка — заголовок предложения. Придумайте самостоятельно.
-      adress: `${adress} широта ${locations['lat']} и долгота ${locations['lng']} `,//Географические координаты по маске  по маске {{location.lat}}, {{location.lng}}
+      adress: `${adress} широта ${getRandomPozitiveFloat(lat.from, lat.before, lat.digits)} и долгота ${getRandomPozitiveFloat(lng.from, lng.before, lng.digits)} `,//Географические координаты по маске  по маске {{location.lat}}, {{location.lng}}
       price:getRandomPozitiveFloat(price.from,price.before,price.digits), //число — стоимость. Случайное целое положительное число.
       type: type[getRandomPozitiveFloat(0,type.length-1,0)],
       guest:getRandomPozitiveFloat(guest.from,guest.before,guest.digits),// число — количество гостей, которое можно разместить. Случайное целое положительное число.
@@ -55,9 +49,8 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
   return objects;
 }
 
-
 const generateArrayData = (lengthArray) => Array.from({length:lengthArray}, (value,index) => generateArrayObjects(lengthArray,index));
 
-export {generateArrayData};
+export default generateArrayData;
 
 
