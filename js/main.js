@@ -1,3 +1,5 @@
-import {generateArrayData} from './data.js';
+import generateArrayData from './data.js';
+import generateTemplate from './generate-template.js';
 
-generateArrayData(10);
+generateTemplate(generateArrayData(10));
+
