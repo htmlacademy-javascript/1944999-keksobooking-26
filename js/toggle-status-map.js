@@ -5,9 +5,9 @@ const disablingMap = function () {
   const collectionOptionsMap = formMap.querySelectorAll('select');
 
   adForm.classList.add('ad-form--disabled');
-  formMap.classList.add('ad-form--disabled')
-  collectionFieldsetNotice.forEach((value) => value.disabled = true );
-  collectionOptionsMap.forEach((value) => value.disabled = true)
+  formMap.classList.add('ad-form--disabled');
+  collectionFieldsetNotice.forEach((value) => { value.disabled = true;});
+  collectionOptionsMap.forEach((value) => { value.disabled = true;});
 };
 
 const enabledMap = function () {
@@ -17,7 +17,9 @@ const enabledMap = function () {
   const collectionOptionsMap = formMap.querySelectorAll('select');
 
   adForm.classList.remove('ad-form--disabled');
-  formMap.classList.remove('ad-form--disabled')
-  collectionFieldsetNotice.forEach((value) => value.disabled = false );
-  collectionOptionsMap.forEach((value) => value.disabled = false)
+  formMap.classList.remove('ad-form--disabled');
+  collectionFieldsetNotice.forEach((value) => { value.disabled = false;});
+  collectionOptionsMap.forEach((value) => { value.disabled = false;});
 };
+disablingMap();
+enabledMap();
