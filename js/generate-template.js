@@ -8,20 +8,25 @@ const generateTemplate = function (generateArrayData){
     const cloneTemplate = templateCard.cloneNode(true);
     const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature');
 
-    cloneTemplate.querySelector('.popup__avatar').src = author.avatars;
-    if(!author.avatars) {cloneTemplate.querySelector('.popup__avatar').remove();}
+    if (author.avatar) {
+      cloneTemplate.querySelector('.popup__avatar').src = author.avatar;
+    } else {cloneTemplate.querySelector('.popup__avatar').remove();}
 
-    cloneTemplate.querySelector('.popup__title').textContent = offer.title;
-    if(!offer.title) {cloneTemplate.querySelector('.popup__title').remove();}
+    if(offer.title) {
+      cloneTemplate.querySelector('.popup__title').textContent = offer.title;
+    } else {cloneTemplate.querySelector('.popup__title').remove();}
 
-    cloneTemplate.querySelector('.popup__text--address').textContent = offer.adress;
-    if(!offer.adress) {cloneTemplate.querySelector('.popup__text--address').remove();}
+    if(offer.adress) {
+      cloneTemplate.querySelector('.popup__text--address').textContent = offer.adress;
+    } else {cloneTemplate.querySelector('.popup__text--address').remove();}
 
-    cloneTemplate.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь `;
-    if(!offer.price) {cloneTemplate.querySelector('.popup__text--price').remove();}
+    if(offer.price) {
+      cloneTemplate.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь `;
+    } else {cloneTemplate.querySelector('.popup__text--price').remove();}
 
-    cloneTemplate.querySelector('.popup__type').textContent = type[offer.type];
-    if(!type[offer.type]) {cloneTemplate.querySelector('.popup__type').remove();}
+    if(type[offer.type]) {
+      cloneTemplate.querySelector('.popup__type').textContent = type[offer.type];
+    } else {cloneTemplate.querySelector('.popup__type').remove();}
 
     cloneTemplate.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guest} гостей`;
     cloneTemplate.querySelector('.popup__text--time').textContent= `Заезд после ${offer.checkin} выезд до ${offer.checkout}`;
