@@ -33,10 +33,10 @@ const submitForm = () => {
 };
 
 buttonReset.addEventListener('click', () => {
-  pristine.reset()
-  slider.noUiSlider.reset()
-  mapFilters.reset()
-})
+  pristine.reset();
+  slider.noUiSlider.reset();
+  mapFilters.reset();
+});
 
 
 slider.noUiSlider.on('end', () => {
@@ -45,13 +45,13 @@ slider.noUiSlider.on('end', () => {
 
 formNotice.addEventListener('change', (evt) => {
   if (evt.target === capacityNotice) {
-    pristine.validate(roomNumber)
+    pristine.validate(roomNumber);
   }
 
   else {
-    pristine.validate(evt.target)
+    pristine.validate(evt.target);
   }
-})
+});
 
 export default submitForm;
 

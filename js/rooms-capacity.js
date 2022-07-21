@@ -13,7 +13,7 @@ const collectionCapacitys =  numberCapacity.children;
 
 const validateRooms = () => {
   const defaultNumberCapacity = addictionRoomСapacity[numberRooms.value];
-  return defaultNumberCapacity.some((element) => element === String(numberCapacity.value))
+  return defaultNumberCapacity.some((element) => element === String(numberCapacity.value));
 };
 
 
@@ -41,9 +41,8 @@ const getMessageCapacity = () => {
   return sentence;
 };
 
-const getErrorMessageNumberRooms= () => {
-  return `${Array.from(numberRooms.options).filter((option) => option.selected)[0].textContent} ${getMessageCapacity()}.`;
-};
+const getErrorMessageNumberRooms = () => `${Array.from(numberRooms.options).filter((option) => option.selected)[0].textContent} ${getMessageCapacity()}.`;
+
 
 export {numberRooms,validateRooms,getErrorMessageNumberRooms,numberCapacity};
 
