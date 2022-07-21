@@ -54,7 +54,7 @@ formNotice.addEventListener('change', (evt) => {
     pristine.validate(price);
   }
 
-    pristine.validate(evt.target);
+  pristine.validate(evt.target);
 
 });
 

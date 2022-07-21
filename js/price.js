@@ -23,7 +23,7 @@ slider.noUiSlider.on('update', (values) => {
   priceNight.value = parseInt(values,10);
 });
 
-priceNight.value = ''
+priceNight.value = '';
 
 typeHome.addEventListener('change', () => {
   priceNight.placeholder = minPrices[typeHome.value];
