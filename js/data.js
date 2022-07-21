@@ -27,7 +27,7 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
   const objects = {
 
     author: {//объект — описывает автора.
-      avatars: `img/avatars/user${getArrayNumberForImage(lengthArrayAvatar)[indexAvatar]}.png`,//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
+      avatar: `img/avatars/user${getArrayNumberForImage(lengthArrayAvatar)[indexAvatar]}.png`,//это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
     },
 
     offer: {

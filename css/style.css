@@ -363,6 +363,9 @@ fieldset {
   display: block;
   padding-bottom: 5px;
 }
+.ad-form__element input {
+  white-space: normal;
+}
 
 .ad-form__element input,
 .ad-form__element select,
@@ -371,6 +374,7 @@ fieldset {
 
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 18px;
+  text-transform: capitalize;
 
   height: 42px;
   padding-left: 14px;
@@ -516,7 +520,7 @@ fieldset {
   width: calc(100% - 20px);
   max-width: calc(100% - 20px);
   min-height: 230px;
-
+  text-transform: capitalize;
   padding-top: 10px;
 }
 
@@ -931,7 +935,7 @@ fieldset {
 .error__message {
   position: relative;
 
-  color: #ffffff;
+  color: #000000;
   font-size: 50px;
   font-weight: 700;
 }
@@ -1009,4 +1013,10 @@ fieldset {
 
 .hidden {
   display: none;
+}
+
+/* Сообщение о невалидной форме */
+
+.text-help {
+  color:#b92424;
 }
