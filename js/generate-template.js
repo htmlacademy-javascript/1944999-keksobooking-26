@@ -51,7 +51,7 @@ const generateTemplate = (generateArrayData) =>{
       elementPhoto.src = photo;
       cloneTemplate.querySelector('.popup__photos').append(elementPhoto);
     });
-    cloneTemplate.querySelector('.popup__photo').remove(); 
+    cloneTemplate.querySelector('.popup__photo').remove();
 
     fragment.append(cloneTemplate);
   });
