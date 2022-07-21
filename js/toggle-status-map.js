@@ -1,5 +1,5 @@
 const adForm = document.querySelector('.ad-form');
-const collectionFieldsetNotice = document.querySelectorAll('fieldset'); //Отключаю все фидлсеты тут
+const collectionFieldsetNotice = document.querySelectorAll('fieldset');
 const formMap = document.querySelector('.map__filters');
 const collectionOptionsMap = formMap.querySelectorAll('select');
 const slider = adForm.querySelector('.ad-form__slider');
