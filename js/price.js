@@ -20,40 +20,57 @@ noUiSlider.create(slider, {
 });
 
 slider.noUiSlider.on('update', (values) => {
-  priceNight.value = parseInt(values,10);
+  priceNight.placeholder = parseInt(values,10); //При установке шага слайдера, значение с двумя знаками после запятой получается, поэтому пришлось ParseInt применять.
 });
 
-priceNight.addEventListener('click', function () {
+slider.noUiSlider.on('change', (values) => {
+  priceNight.value = parseInt(values,10); //При установке шага слайдера, значение с двумя знаками после запятой получается, поэтому пришлось ParseInt применять.
+});
+
+
+
+priceNight.addEventListener('click', () => {
   slider.noUiSlider.set([this.value]);
+
 });
 
 typeHome.addEventListener('change', () => {
-  slider.noUiSlider.set([minPrices[typeHome.value]]);
+  if (priceNight.placeholder < minPrices[typeHome.value])
+  {
+    slider.noUiSlider.set([minPrices[typeHome.value]]);
+    priceNight.placeholder = minPrices[typeHome.value]
+  }
+
 });
 
-const validatePriceNight = function (value)
-{
-  if (!value || Number(value) === 0)
-  {return false;}
+const validatePriceNight = (value) => {
+  if (!value || Number(value) === 0) {
+    return false;
+  }
 
-  if (value > 100000)
-  {return false;}
+  if (value > 100000) {
+    return false;
+  }
 
-  if (value < minPrices[typeHome.value])
-  {return false;}
+  if (value < minPrices[typeHome.value]) {
+    return false;
+  }
 
   return true;
 };
 
-const getErrorMessagePriceNight = function (value) {
-  if (!value || Number(value) === 0)
-  {return 'Обязательное поле';}
+const getErrorMessagePriceNight = (value) => {
+  if (!value || Number(value) === 0) {
+    return 'Обязательное поле';
+  }
 
-  if (value > 100000)
-  {return 'Максимальное значение - 100 000';}
+  if (value > 100000) {
+    return 'Максимальное значение - 100 000';
+  }
 
-  if (value < minPrices[typeHome.value])
-  { return `Минимальная цена за ночь ${minPrices[typeHome.value]}`;}
+  if (value < minPrices[typeHome.value]) {
+    return `Минимальная цена за ночь ${minPrices[typeHome.value]}`;
+  }
 };
 
-export {priceNight,validatePriceNight,getErrorMessagePriceNight};
+export {priceNight,validatePriceNight,getErrorMessagePriceNight,slider};

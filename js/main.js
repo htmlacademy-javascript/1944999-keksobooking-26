@@ -8,5 +8,6 @@ import submitForm from './validate-form.js';
 generateTemplate(generateArrayData(10));
 synchronTime();
 submitForm();
-enabledMap ();
 disablingMap();
+enabledMap (); //Активное состояние. Загрузка и успешная инициализация карты в след разделах же))
+//А поле адреса заполняется с координат метки которая двигается на карте, вроде так понял

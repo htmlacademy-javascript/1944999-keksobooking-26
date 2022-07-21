@@ -3,7 +3,7 @@ const templateCard = document.querySelector('#card').content.querySelector('.pop
 const mapCanvas = document.querySelector('#map-canvas');
 const fragment = document.createDocumentFragment();
 
-const generateTemplate = function (generateArrayData){
+const generateTemplate = (generateArrayData) =>{
   generateArrayData.forEach(({author,offer}) => {
     const cloneTemplate = templateCard.cloneNode(true);
     const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature');

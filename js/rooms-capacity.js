@@ -11,18 +11,13 @@ const numberRooms = formNotice.querySelector('#room_number');
 const numberCapacity = formNotice.querySelector('#capacity');
 const collectionCapacitys =  numberCapacity.children;
 
-const validateRooms = function ()
-{
+const validateRooms = () => {
   const defaultNumberCapacity = addictionRoomСapacity[numberRooms.value];
-  if (defaultNumberCapacity.some((element) => element === String(numberCapacity.value)))
-  {return true;}
-
-  else {return false;}
+  return defaultNumberCapacity.some((element) => element === String(numberCapacity.value))
 };
 
 
-const getMessageCapacity = function ()
-{
+const getMessageCapacity = () => {
   let sentence = '';
   const valuesNumbersCapacitys = addictionRoomСapacity[numberRooms.value];
 
@@ -46,10 +41,9 @@ const getMessageCapacity = function ()
   return sentence;
 };
 
-const getErrorMessageNumberRooms= function ()
-{
+const getErrorMessageNumberRooms= () => {
   return `${Array.from(numberRooms.options).filter((option) => option.selected)[0].textContent} ${getMessageCapacity()}.`;
 };
 
-export {numberRooms,validateRooms,getErrorMessageNumberRooms};
+export {numberRooms,validateRooms,getErrorMessageNumberRooms,numberCapacity};
 
