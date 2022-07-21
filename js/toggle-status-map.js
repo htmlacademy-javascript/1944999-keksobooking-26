@@ -17,7 +17,7 @@ const enabledMap = () => {
   formMap.classList.remove('ad-form--disabled');
   collectionFieldsetNotice.forEach((value) => { value.disabled = false;});
   collectionOptionsMap.forEach((value) => { value.disabled = false;});
-  slider.setAttribute('disabled', false);
+  slider.removeAttribute('disabled');
 };
 
 export {disablingMap,enabledMap};

@@ -20,25 +20,13 @@ noUiSlider.create(slider, {
 });
 
 slider.noUiSlider.on('update', (values) => {
-  priceNight.placeholder = parseInt(values,10); //При установке шага слайдера, значение с двумя знаками после запятой получается, поэтому пришлось ParseInt применять.
+  priceNight.value = parseInt(values,10);
 });
 
-slider.noUiSlider.on('change', (values) => {
-  priceNight.value = parseInt(values,10); //При установке шага слайдера, значение с двумя знаками после запятой получается, поэтому пришлось ParseInt применять.
-});
-
-priceNight.addEventListener('click', () => {
-  slider.noUiSlider.set([this.value]);
-
-});
+priceNight.value = ''
 
 typeHome.addEventListener('change', () => {
-  if (priceNight.placeholder < minPrices[typeHome.value])
-  {
-    slider.noUiSlider.set([minPrices[typeHome.value]]);
-    priceNight.placeholder = minPrices[typeHome.value];
-  }
-
+  priceNight.placeholder = minPrices[typeHome.value];
 });
 
 const validatePriceNight = (value) => {

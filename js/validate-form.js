@@ -7,6 +7,8 @@ const buttonReset = document.querySelector('.ad-form__reset');
 const mapFilters = document.querySelector('.map__filters');
 const capacityNotice = formNotice.querySelector('#capacity');
 const roomNumber = formNotice.querySelector('#room_number');
+const typeHome = formNotice.querySelector('#type');
+const price = formNotice.querySelector('#price');
 
 
 const pristine = new Pristine(formNotice, {
@@ -48,9 +50,12 @@ formNotice.addEventListener('change', (evt) => {
     pristine.validate(roomNumber);
   }
 
-  else {
-    pristine.validate(evt.target);
+  if (evt.target === typeHome) {
+    pristine.validate(price);
   }
+
+    pristine.validate(evt.target);
+
 });
 
 export default submitForm;
