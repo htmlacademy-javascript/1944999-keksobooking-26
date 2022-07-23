@@ -1,8 +1,5 @@
-
 import synchronTime from './time-in-out.js';
 import submitForm from './validate-form.js';
-
-
 
 synchronTime();
 submitForm();

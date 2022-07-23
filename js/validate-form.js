@@ -48,9 +48,7 @@ buttonReset.addEventListener('click', () => {
   map.setView({
     lat: 35.658553299865794,
     lng:  139.77657171642844,
-    },
-    12
-    );
+  },12);
 });
 
 

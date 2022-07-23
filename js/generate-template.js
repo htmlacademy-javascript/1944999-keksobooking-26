@@ -4,9 +4,8 @@ const fragment = document.createDocumentFragment();
 
 const generateTemplate = (generateArrayData) =>{
   if (fragment.children){
-    fragment.replaceChildren()
+    fragment.replaceChildren();
   }
-  
   generateArrayData.forEach(({author,offer}) => {
     const cloneTemplate = templateCard.cloneNode(true);
     const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature');
@@ -58,7 +57,7 @@ const generateTemplate = (generateArrayData) =>{
 
     fragment.append(cloneTemplate);
   });
-  return fragment
+  return fragment;
 };
 
 export default generateTemplate;
