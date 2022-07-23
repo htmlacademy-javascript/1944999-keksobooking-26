@@ -1,9 +1,12 @@
 const type = {palace: 'Дворец',flat:'Квартира', bungalow:'Бунгало', house:'Дом', hotel:'Отель'};
 const templateCard = document.querySelector('#card').content.querySelector('.popup');
-const mapCanvas = document.querySelector('#map-canvas');
 const fragment = document.createDocumentFragment();
 
 const generateTemplate = (generateArrayData) =>{
+  if (fragment.children){
+    fragment.replaceChildren()
+  }
+  
   generateArrayData.forEach(({author,offer}) => {
     const cloneTemplate = templateCard.cloneNode(true);
     const features = cloneTemplate.querySelector('.popup__features').querySelectorAll('.popup__feature');
@@ -17,7 +20,7 @@ const generateTemplate = (generateArrayData) =>{
     } else {cloneTemplate.querySelector('.popup__title').remove();}
 
     if(offer.adress) {
-      cloneTemplate.querySelector('.popup__text--address').textContent = offer.adress;
+      cloneTemplate.querySelector('.popup__text--address').textContent = `Географические координаты: широта: ${offer.adress.lat}, долгота: ${offer.adress.lng}`;
     } else {cloneTemplate.querySelector('.popup__text--address').remove();}
 
     if(offer.price) {
@@ -55,7 +58,7 @@ const generateTemplate = (generateArrayData) =>{
 
     fragment.append(cloneTemplate);
   });
-  mapCanvas.append(fragment);
+  return fragment
 };
 
 export default generateTemplate;

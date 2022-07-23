@@ -1,6 +1,7 @@
 import { titleNotice, validateTitle, getErrorMessageTitle } from './title-notice.js';
 import  {priceNight ,validatePriceNight, getErrorMessagePriceNight, slider } from './price.js';
 import { numberRooms, validateRooms, getErrorMessageNumberRooms } from './rooms-capacity.js';
+import { marker,map } from './map.js';
 
 const formNotice = document.querySelector('.ad-form');
 const buttonReset = document.querySelector('.ad-form__reset');
@@ -38,6 +39,18 @@ buttonReset.addEventListener('click', () => {
   pristine.reset();
   slider.noUiSlider.reset();
   mapFilters.reset();
+
+  marker.setLatLng({
+    lat: 35.658553299865794,
+    lng:  139.77657171642844,
+  });
+
+  map.setView({
+    lat: 35.658553299865794,
+    lng:  139.77657171642844,
+    },
+    12
+    );
 });
 
 

@@ -9,10 +9,9 @@ const {lat,lng} = locations;
 
 const offer = {
   title: 'Гостевой дом',
-  adress: 'Географические координаты: ',
-  price: {from: 1000,before: 20000,digits: 0},
+  price: {from: 0,before: 100000,digits: 0},
   type: ['palace', 'flat', 'house', 'bungalow', 'hotel'],
-  guest: {from: 1,before: 10,digits: 0},
+  guest: {from: 1,before: 5,digits: 0},
   checkin: ['12:00','13:00','14:00'],
   checkout: ['12:00','13:00','14:00'],
   features: ['wifi', 'dishwasher', 'parking', 'washer', 'elevator','conditioner'],
@@ -20,7 +19,7 @@ const offer = {
   photos:  ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg']
 };
 
-const {title,adress,price,type,guest,checkin,checkout,features,description,photos} = offer;
+const {title,price,type,guest,checkin,checkout,features,description,photos} = offer;
 
 function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
 
@@ -32,11 +31,13 @@ function generateArrayObjects (lengthArrayAvatar,indexAvatar) {
 
     offer: {
       title:title, //строка — заголовок предложения. Придумайте самостоятельно.
-      adress: `${adress} широта ${getRandomPozitiveFloat(lat.from, lat.before, lat.digits)} и долгота ${getRandomPozitiveFloat(lng.from, lng.before, lng.digits)} `,//Географические координаты по маске  по маске {{location.lat}}, {{location.lng}}
+      adress: {
+        lat: getRandomPozitiveFloat(lat.from, lat.before, lat.digits),lng: getRandomPozitiveFloat(lng.from, lng.before, lng.digits)
+      },
       price:getRandomPozitiveFloat(price.from,price.before,price.digits), //число — стоимость. Случайное целое положительное число.
       type: type[getRandomPozitiveFloat(0,type.length-1,0)],
       guest:getRandomPozitiveFloat(guest.from,guest.before,guest.digits),// число — количество гостей, которое можно разместить. Случайное целое положительное число.
-      rooms: getRandomPozitiveFloat(0,5,0),
+      rooms: getRandomPozitiveFloat(1,3,0),
       checkin:checkin[getRandomPozitiveFloat(0,2,0)],// строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
       checkout:checkout[getRandomPozitiveFloat(0,2,0)],// строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
       features:features.filter((v,i) => i <  getRandomPozitiveFloat(0,features.length,0)),//массив строк — массив случайной длины из значений, Значения не должны повторяться.
