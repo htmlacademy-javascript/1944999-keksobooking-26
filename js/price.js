@@ -25,6 +25,14 @@ slider.noUiSlider.on('update', (values) => {
 
 priceNight.value = '';
 
+priceNight.addEventListener('change', () => {
+  slider.noUiSlider.set(priceNight.value);
+  if (priceNight.value === '0') {
+    priceNight.value = '';
+  }
+});
+
+
 typeHome.addEventListener('change', () => {
   priceNight.placeholder = minPrices[typeHome.value];
 });

@@ -9,7 +9,13 @@ const inputeGuests = formFilter.querySelector('#housing-guests');
 const inputeRooms = formFilter.querySelector('#housing-rooms');
 const inputePrice = formFilter.querySelector('#housing-price');
 const inputeType = formFilter.querySelector('#housing-type');
-
+const inputeFeatures = formFilter.querySelector('#housing-features');
+const defaultCoordinates =
+{
+  lat: 35.658553299865794,
+  lng:  139.77657171642844,
+  zoom: 12
+};
 
 disablingMap();
 
@@ -18,9 +24,9 @@ const map = L.map('map-canvas')
     enabledMap ();
   })
   .setView({
-    lat: 35.658553299865794,
-    lng:  139.77657171642844
-  },12);
+    lat: defaultCoordinates.lat,
+    lng:  defaultCoordinates.lng
+  },defaultCoordinates.zoom);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
@@ -38,8 +44,8 @@ const mainPinIcon = L.icon ({
 
 const marker = L.marker(
   {
-    lat: 35.658553299865794,
-    lng:  139.77657171642844,
+    lat: defaultCoordinates.lat,
+    lng:  defaultCoordinates.lng
   },
   {
     draggable: true,
@@ -47,8 +53,13 @@ const marker = L.marker(
   }
 ).addTo(map);
 
-marker.on('moveend', (evt) => {
-  inputeAddress.value = evt.target.getLatLng();
+const getAdress = () => {
+  inputeAddress.value =`Широта ${marker.getLatLng().lat.toFixed(5)}, долгота ${marker.getLatLng().lng.toFixed(5)}` ;
+};
+getAdress();
+
+marker.on('moveend', () => {
+  getAdress();
 });
 
 const usuallyPinIcon= L.icon(
@@ -81,9 +92,11 @@ const showMarkers =  (infoNotification,popup ) => {
 showMarkers(infoNotifications,popupsFragment);
 
 formFilter.addEventListener('change', () => {
+  const collectionFeatures = inputeFeatures.querySelectorAll('input:checked');
   markerGroup.clearLayers();
 
-  const filteredInfoNotifications = infoNotifications.filter((infoNotification) =>  String(infoNotification.offer.guest) <= inputeGuests.value || inputeGuests.value ==='any')
+  const filteredInfoNotifications = infoNotifications
+    .filter((infoNotification) =>  String(infoNotification.offer.guest) <= inputeGuests.value || inputeGuests.value ==='any')
     .filter((infoNotification) => String(infoNotification.offer.rooms) === inputeRooms.value || inputeRooms.value ==='any')
     .filter((infoNotification) => {
       if (inputePrice.value === 'middle'){
@@ -98,11 +111,23 @@ formFilter.addEventListener('change', () => {
       return true;
     })
     .filter((infoNotification) => infoNotification.offer.type === inputeType.value || inputeType.value ==='any'
-    );
+    )
+    .filter((infoNotification) => {
+      if (collectionFeatures.length !== 0){
+        for (let i=0; i<collectionFeatures.length;i++){
+          if (infoNotification.offer.features.includes(collectionFeatures[i].value)=== false) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      else {return true;}
+    });
 
   const filteredPopups = generateTemplate(filteredInfoNotifications);
 
   showMarkers(filteredInfoNotifications,filteredPopups);
 });
 
-export {map,marker};
+export {map,marker,showMarkers,infoNotifications,popupsFragment,defaultCoordinates,getAdress};
